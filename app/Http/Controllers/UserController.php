@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController as BaseController;
 use App\Interfaces\User\UserRepositoryInterface;
-use DB;
+use Illuminate\Support\Facades\DB; 
 use App\Classes\ApiCatchErrors;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
