@@ -24,6 +24,7 @@ class UserRepository implements UserRepositoryInterface {
         }
     }
     public function logout(){
-        Auth::logout();
+        Auth::user()->tokens()->delete();
+        return true;   
     }
 }
