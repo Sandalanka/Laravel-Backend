@@ -73,10 +73,13 @@ class ProductController extends BaseController
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $data = $this->productRepositoryInterface->getById($id);
-
-        return $this->sendResponse(new ProductResource($data),'');
+    {   try{
+            $data = $this->productRepositoryInterface->getById($id);
+            return $this->sendResponse(new ProductResource($data),'');
+        }catch(\Exception $ex){
+            return ApiCatchErrors::throw($ex);
+        }
+        
     }
 
     /**
