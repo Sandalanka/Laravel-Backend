@@ -14,7 +14,8 @@ class GetAllProductTest extends TestCase
      * @return void
      */
     public function test_get_all_products()
-    {
+    {   
+        $this->authUser();
         $response = $this->getJson('/api/products');
         $response->assertStatus(200);
         $response->assertJsonStructure([

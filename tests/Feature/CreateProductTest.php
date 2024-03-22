@@ -14,7 +14,8 @@ class CreateProductTest extends TestCase
      * @return void
      */
     public function test_product_creation_with_valid_data()
-    {
+    {   
+        $this->authUser();
         $productData = Product::factory()->make()->toArray();
         $response = $this->postJson('/api/products', $productData);
         $response->assertStatus(200);
@@ -31,6 +32,7 @@ class CreateProductTest extends TestCase
 
     public function test_product_creation_with_mssing_fields()
     {
+        $this->authUser();
         $response = $this->postJson('/api/products', []);
         $response->assertStatus(200); 
     }

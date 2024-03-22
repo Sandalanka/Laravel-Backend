@@ -15,8 +15,9 @@ class GetByIdProductTest extends TestCase
      * @return void
      */
     public function test_product_get_by_id()
-    {
-        $product = Product::factory()->create();
+    {  
+        $this->authUser();
+        $product = $this->createProduct();
         $response = $this->getJson('/api/products/' . $product->id);
         $response->assertStatus(200); 
         $response->assertJsonStructure([
