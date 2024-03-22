@@ -15,8 +15,9 @@ class UpdateProductTest extends TestCase
      * @return void
      */
     public function test_update_product_with_valid_data()
-    {
-        $product = Product::factory()->create();
+    {  
+        $this->authUser();
+        $product = $this->createProduct();
         $response = $this->putJson('/api/products/' . $product->id, [
             'name' => 'Updated Product Name',
             'description' => 'Updated Product Description',
@@ -29,8 +30,9 @@ class UpdateProductTest extends TestCase
     }
 
     public function test_update_product_with_invalid_data()
-    {
-        $product = Product::factory()->create();
+    {   
+        $this->authUser();
+        $product = $this->createProduct();
         $response = $this->putJson('/api/products/' . $product->id, []);
         $response->assertStatus(200); 
     }
